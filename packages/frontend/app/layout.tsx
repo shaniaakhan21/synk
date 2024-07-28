@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import MockGoogleOAuthProvider from "../pages/components/MockGoogleOAuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <MockGoogleOAuthProvider>
+          {/* Wrap other mock providers here if necessary */}
+          {children}
+        </MockGoogleOAuthProvider>
+      </body>
     </html>
   );
 }
